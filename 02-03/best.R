@@ -6,7 +6,7 @@ best <- function(state, outcome){
   ##"pneumonia" = col 23
   p_outcome <- c("heart attack", "heart failure", "pneumonia")
   #Read outcome data
-  outcome_data <- read.csv("outcome-of-care-measures.csv")
+  outcome_data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
   
   #Check that state and outcome are valid
   ##Checking the state
@@ -32,7 +32,7 @@ best <- function(state, outcome){
   if(outcome == "heart attack"){
     
     #Get for heart attack
-    outcome_data[,11] <- as.numeric(outcome_data[,11])
+    outcome_data[,11] <- suppressWarnings(as.numeric(outcome_data[,11]))
     ha_outcome <- outcome_data[outcome_data$State==state & 
                                  complete.cases(outcome_data$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack), c(2,11)]
     
@@ -43,7 +43,7 @@ best <- function(state, outcome){
   } else if(outcome == "heart failure"){
     
     #Get for heart failure
-    outcome_data[,17] <- as.numeric(outcome_data[,17])
+    outcome_data[,17] <- suppressWarnings(as.numeric(outcome_data[,17])) 
     ha_outcome <- outcome_data[outcome_data$State==state & 
                                  complete.cases(outcome_data$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure), c(2,17)]
     
@@ -55,7 +55,7 @@ best <- function(state, outcome){
   }else if(outcome == "pneumonia"){
     
     #Get for pneumonia
-    outcome_data[,23] <- as.numeric(outcome_data[,23])
+    outcome_data[,23] <- suppressWarnings(as.numeric(outcome_data[,23]))
     ha_outcome <- outcome_data[outcome_data$State==state & 
                                  complete.cases(outcome_data$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia), c(2,23)]
     
