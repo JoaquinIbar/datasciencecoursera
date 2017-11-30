@@ -36,21 +36,12 @@ best <- function(state, outcome){
     ha_outcome <- outcome_data[outcome_data$State==state & 
                                  complete.cases(outcome_data$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack), c(2,11)]
     
-    #Sort the data
-    ha_sort_outcome <- ha_outcome[order(ha_outcome[,2], ha_outcome[,1]),]
-    
-    return(as.character(ha_sort_outcome[1,1])) 
   } else if(outcome == "heart failure"){
     
     #Get for heart failure
     outcome_data[,17] <- suppressWarnings(as.numeric(outcome_data[,17])) 
     ha_outcome <- outcome_data[outcome_data$State==state & 
                                  complete.cases(outcome_data$Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure), c(2,17)]
-    
-    #Sort the data
-    ha_sort_outcome <- ha_outcome[order(ha_outcome[,2], ha_outcome[,1]),]
-    
-    return(as.character(ha_sort_outcome[1,1])) 
     
   }else if(outcome == "pneumonia"){
     
@@ -59,13 +50,9 @@ best <- function(state, outcome){
     ha_outcome <- outcome_data[outcome_data$State==state & 
                                  complete.cases(outcome_data$Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia), c(2,23)]
     
-    #Sort the data
-    ha_sort_outcome <- ha_outcome[order(ha_outcome[,2], ha_outcome[,1]),]
-    
-    return(as.character(ha_sort_outcome[1,1])) 
-    
   }
-  
-  
+  #Sort the data
+  ha_sort_outcome <- ha_outcome[order(ha_outcome[,2], ha_outcome[,1]),]
+  return(as.character(ha_sort_outcome[1,1])) 
   
 }
