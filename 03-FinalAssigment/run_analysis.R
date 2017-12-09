@@ -63,7 +63,13 @@ colnames(meanstd_dataset)<-gsub("-","", colnames(meanstd_dataset))
 ##Load dplyr package
 library(dplyr)
 
-##Make new data set with grouping and mean 
-tydy_dataset <- meanstd_dataset %>% group_by(subject, activity) %>% summarise_all(.funs = "mean")
+##Make new data set with grouping and mean calc
+tidy_dataset <- meanstd_dataset %>% group_by(subject, activity) %>% summarise_all(.funs = "mean")
+
+##Export the result
+write.table(tydy_dataset, "tidy_dataset.txt", row.names = FALSE)
+
 ##END GOAL (5): From the data set in step 4, creates a second, independent tidy data set with the 
 ##average of each variable for each activity and each subject.
+
+
