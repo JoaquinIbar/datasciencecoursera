@@ -1,8 +1,4 @@
 # CODEBOOK
-## IDs
-
-* `subject` - The ID of the test subject
-* `activity` - The type of activity performed when the corresponding measurements were taken
 
 ## VARIABLES
 ```
@@ -29,10 +25,12 @@
 [81] "freqBodyBodyGyroJerkMagmeanFreq"
 ```
 ## ACTIVITIES
-
-* `WALKING` (value `1`)
-* `WALKING_UPSTAIRS` (value `2`)
-* `WALKING_DOWNSTAIRS` (value `3`)
-* `SITTING` (value `4`)
-* `STANDING` (value `5`)
-* `LAYING` (value `6`)
+```
+    V1                   V2
+1   1               WALKING
+2   2      WALKING_UPSTAIRS
+3   3    WALKING_DOWNSTAIRS
+4   4               SITTING
+5   5              STANDING
+6   6                LAYING
+```
